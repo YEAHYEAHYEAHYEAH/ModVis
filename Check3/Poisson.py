@@ -30,23 +30,17 @@ from matplotlib import cm
 reload(sys)  
 sys.setdefaultencoding('utf-8')
 
-def getUserInt(question):
-    userInt = raw_input(question)
-    if userInt.strip("0123456789") == "" and userInt!="": return int(userInt)
+def stripper(question,toStrip,thingType):
+    userVal = raw_input(question)
+    if userVal.strip(toStrip) == "" and userVal!="": return int(userVal)
     else: 
-        print "Enter an integer number."
-        getUserInt(question)
+        print "Enter a{} number.".format(thingType)
+        stripper(question,toStrip)
 
-def getUserFloat(question):
-    userFloat = raw_input(question)
-    if userFloat.strip("-1234567890.")=="" and userFloat!="":
-        userFloat = float(userFloat)
-    if value2 <=1.0 and value2 >= -1.0 and value2>=value1:
-        print "Acceptable value.\n"
-        break
-    else: print "A decimal between -1 and 1 and greater than lower range."
-    else: print "A decimal between -1 and 1 and greater than lower range."
-
+def getUserInt(question): stripper(question, "0123456789", "n integer")
+def getUserFloat(question): stripper(question, "-1234567890.", " decimal")
+    
+    
 #=======================================================================
 #               Simulation and Animation Section
 #_______________________________________________________________________
